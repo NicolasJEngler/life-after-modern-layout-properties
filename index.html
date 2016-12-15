@@ -1,0 +1,996 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Life after modern layout properties</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class="slides__slide slides__slide--initial">
+					<h1>Life after modern layout properties</h1>
+					<h2>Or what's the next thing to focus on in the world of <strong>CSS</strong> after the standarization of modern layout systems</h2>
+
+					<ul>
+						<li>Nicolás Joel Engler</li>
+						<li><span class="underline">Currently</span>: Front-end Director @ <em>Indicius</em></li>
+						<li><span class="underline">Twitter</span>: @nicolasjengler</li>
+						<li><span class="underline">Email</span>: hi@nicolasjengler.com.ar</li>
+					</ul>
+				</section>
+
+				<section class="slides__slide">
+					<h1>CSS3? CSS4?<br> Next generation CSS?<br> No, just CSS.</h1>
+					<h2>We are no longer versioning CSS as a whole</h2>
+
+					<p>
+						CSS1 and CSS2/2.1 were monolithic specifications that worked it all up in a single document, but after these versions, in order to organize and speed up processes, CSS was modularized starting from what we know as CSS3, which was actually a group of Level 3 modules.
+					</p>
+					<p>
+						In this presentation we'll be looking at some of the new modules that are currently under development like: CSS Color Module Level 4, CSS Pseudo-Elements Module Level 4, CSS Text Module Level 4, CSS Text Decoration Module Level 3, and Selectors Level 4.
+					</p>
+				</section>
+
+				<section class="slides__slide">
+					<h1>CSS Color<br> Module Level 4</h1>
+					<h2><img src="images/rainbow-puke.gif"></h2>
+				</section>
+
+				<section class="slides__slide">
+					<h2>Color formats & others</h2>
+
+					<ul class="small-font">
+						<li>
+							6 digits hex value, i.e.: <code class="inline" data-trim data-noescape>#ffff00</code> – 3 digits hex value, i.e.: <code class="inline" data-trim data-noescape>#ff0</code>
+						</li>
+						<li>
+							RGB value, i.e.: <code class="inline" data-trim data-noescape>rgb(255,255,0)</code> – RGBa value, i.e.: <code class="inline" data-trim data-noescape>rgb(255,255,0,1)</code>
+						</li>
+						<li>
+							HSL value, i.e.: <code class="inline" data-trim data-noescape>hsl(60,100%,50%)</code><br> HSLa value, i.e.: <code class="inline" data-trim data-noescape>hsla(60,100%,50%,1)</code>
+						</li>
+						<li>
+							<span class="new"></span>8 digits hex value w/alpha channel, i.e.: <code class="inline" data-trim data-noescape>#ffff00ff</code><br> <span class="new"></span>4 digits hex value w/alpha channel, i.e.: <code class="inline" data-trim data-noescape>#ff0f</code>
+						</li>
+						<li>
+							<span class="new"></span>HWB value w/optional alpha channel, i.e.: <code class="inline" data-trim data-noescape>hwb(60,0%,0%)</code>
+						</li>
+						<li>
+							<span class="new"></span>LCH value w/optional alpha channel, i.e.: <code class="inline" data-trim data-noescape>lch(100,99,95)</code>
+						</li>
+						<li>
+							<span class="new"></span>Lab value w/optional alpha channel, i.e.: <code class="inline" data-trim data-noescape>lab(97,-21,95)</code>
+						</li>
+						<li>
+							<span class="new"></span>Gray function w/optional alpha channel, i.e.: <code class="inline" data-trim data-noescape>gray(255,50%)</code>
+						</li>
+						<li>
+							<span class="new"></span>Many more, currently under Working Draft status at <a href="https://www.w3.org/TR/css-color-4/" title="CSS Color Module Level 4 WD">https://www.w3.org/TR/css-color-4/</a>
+						</li>
+					</ul>
+				</section>
+
+				<section class="slides__slide">
+					<h1>CSS Pseudo-Elements<br> Module Level 4</h1>
+					<h2><img src="images/construction-simpsons.gif"></h2>
+				</section>
+
+				<section class="slides__slide">
+					<h2 class="mb-60">
+						<code class="inline" data-trim data-noescape>::first-line</code>
+					</h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://www.w3.org/TR/css-pseudo-4/#first-line-pseudo" title="CSS Pseudo-Elements Module Level 4">https://www.w3.org/TR/css-pseudo-4/#first-line-pseudo</a>:
+					</p>
+
+					 <blockquote class="width-100" cite="https://www.w3.org/TR/css-pseudo-4/#first-line-pseudo">The selector <code class="inline" data-trim data-noescape>p::first-line</code> does not match any real document element. It does match a pseudo-element that conforming user agents will insert at the beginning of every p element.</blockquote>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+p::first-line {
+	text-transform: uppercase;
+}
+					</code></pre>
+
+					<div class="first-line-pseudo demo-output">
+						<span class="uppercase">First line of a paragraph</span><br>
+						Something else written here, and so on.<br>
+						We finally reached a third line.<br>
+					</div>
+				</section>
+
+				<section class="slides__slide">
+					<h2>
+						<code class="inline" data-trim data-noescape>::first-letter</code>
+					</h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://www.w3.org/TR/css-pseudo-4/#first-letter-pseudo" title="CSS Pseudo-Elements Module Level 4">https://www.w3.org/TR/css-pseudo-4/#first-letter-pseudo</a>:
+					</p>
+
+					 <blockquote class="width-100" cite="https://www.w3.org/TR/css-pseudo-4/#first-letter-pseudo">The <code class="inline" data-trim data-noescape>::first-letter</code> pseudo-element represents the first typographic letter unit on the first formatted line of its originating element</blockquote>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+p::first-letter {
+	font-size: 2em;
+	font-weight: bold;
+	float: left;
+	margin: 0 10px 10px 0;
+}
+					</code></pre>
+
+					<div class="first-letter-pseudo demo-output">
+						<span class="first-letter">L</span>orem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+					</div>
+				</section>
+
+				<section class="slides__slide">
+					<h2>Highlight pseudo-elements</h2>
+
+					<ul class="min-width-50">
+						<li>
+							<code class="inline" data-trim data-noescape>::selection</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>::inactive-selection</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>::spelling-error</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>::grammar-error</code>
+						</li>
+					</ul>
+
+					<img src="images/text-selection.gif">
+				</section>
+
+				<section class="slides__slide">
+					<h2>Highlight pseudo-elements</h2>
+
+					<p>Only the following properties apply to highlights stylings:</p>
+
+					<ul class="min-width-50">
+						<li>
+							<code class="inline" data-trim data-noescape>color</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>background-color</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>cursor</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>caret-color</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>outline</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>text-decoration</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>text-emphasis-color</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>text-shadow</code>
+						</li>
+					</ul>
+				</section>
+
+				<section class="slides__slide">
+					<h2>
+						<code class="inline" data-trim data-noescape>::marker</code>
+					</h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://www.w3.org/TR/css-pseudo-4/#marker-pseudo" title="CSS Pseudo-Elements Module Level 4">https://www.w3.org/TR/css-pseudo-4/#marker-pseudo</a>:
+					</p>
+
+					 <blockquote class="width-100" cite="https://www.w3.org/TR/css-pseudo-4/#first-letter-pseudo">The <code class="inline" data-trim data-noescape>::marker</code> pseudo-element represents the automatically generated marker box of a list item.</blockquote>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+ul li::marker {
+	font-weight: bold;
+	color: limegreen;
+}
+					</code></pre>
+
+					<div class="marker-pseudo demo-output">
+						<ul>
+							<li><span class="marker">1.</span> Something here</li>
+							<li><span class="marker">2.</span> Something else in this place</li>
+							<li><span class="marker">3.</span> Aaand one more thing</li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="slides__slide">
+					<h1>CSS Text<br> Module Level 4</h1>
+					<h2><img class="min-width-50" src="images/monkey-typewriter.gif"></h2>
+					<p><strong>Warning:</strong> as they day of writing of this presentation (December 14, 2016), this document is under <em>Editor's Draft</em> status</p>
+				</section>
+
+				<section class="slides__slide">
+					<h2 class="mb-60">CSS Text Module Level 4 - Disclaimer</h2>
+					<p>Since this spec is currently under <em>Editor's Draft</em> status, all of the content inside the CSS Text Module Level 4 document is currently under discussion and may change at any moment. The W3C hasn't endorsed this specification and this isn't anything but <strong>work in progress</strong>.</p>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-space-collapse</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-4/#white-space-collapsing" title="CSS Text Module Level 4">https://drafts.csswg.org/css-text-4/#white-space-collapsing</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-4/#white-space-collapsing">This property declares whether and how white space inside the element is collapsed.</blockquote>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-space-collapse</code></h2>
+
+					<p>This property can have the following values:</p>
+
+					<ul>
+						<li>
+							<code class="inline" data-trim data-noescape>collapse</code>: All of the white space is collapsed into a single character, or in some cases a zero-width space (no character)
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>preserve</code>: Sequences of white space aren't collapsed at all and segment breaks are preserved as forced line breaks
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>preserve-breaks</code>: All of the white space is collapsed, but segment breaks are preserved as forced line breaks
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>preserve-spaces</code>: White space isn't collaped, and tabs/segment breaks are converted to spaces
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>discard</code>: All of the white space is discarded
+						</li>
+					</ul>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-space-trim</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-4/#white-space-trim" title="CSS Text Module Level 4">https://drafts.csswg.org/css-text-4/#white-space-trim</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-4/#white-space-trim">This property allows authors to specify trimming behavior at the beginning and end of a box.</blockquote>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-space-trim</code></h2>
+
+					<p>This property can have the following values:</p>
+
+					<ul>
+						<li>
+							<code class="inline" data-trim data-noescape>trim-inner</code>: For block containers this value discards all whitespace at the beginning of the element up to, and including, the last segment break before the first non-white-space character in the element. It also discards all white space at the end of the element starting with the first segment break after the last non-white-space character in the element. For other elements this value discard all whitespace at the beginning and end of the element.
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>discard-before</code>: All collapsible whitespace immediately before the start of the element is collapsed
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>discard-after</code>: All collapsible whitespace immediately after the end of the element is collapsed
+						</li>
+					</ul>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-wrap</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-4/#text-wrap" title="CSS Text Module Level 4">https://drafts.csswg.org/css-text-4/#text-wrap</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-4/#text-wrap">This property specifies the mode for text wrapping.</blockquote>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-wrap</code></h2>
+
+					<p>This property can have the following values:</p>
+
+					<ul>
+						<li>
+							<code class="inline" data-trim data-noescape>wrap</code>: All lones break whenever they should break or as determined by the line-breaking rules currently in effect
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>nowrap</code>: Lines doesn't break, and text that doesn't fit within the block that contains it overflows it
+
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>balance</code>: Same as <code class="inline" data-trim data-noescape>wrap</code> for inline-level elements. For block-level elements that contain line boxes as direct children, line breaks are chosen to balance the remaining space in each line box. Adobe's own demo of how this property should work can be seen at <a href="http://webplatform.adobe.com/balance-text/demo/index.html" title="Adobe's balance value for the text-wrap property">http://webplatform.adobe.com/balance-text/demo/index.html</a>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>multi-line</code>: Same as <code class="inline" data-trim data-noescape>wrap</code> for inline-level and block-level elements
+						</li>
+					</ul>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>wrap-before</code> / <code class="inline" data-trim data-noescape>wrap-after</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-4/#wrap-before" title="CSS Text Module Level 4">https://drafts.csswg.org/css-text-4/#wrap-before</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-4/#text-wrap">These properties specify modifications to break opportunities in line breaking and flex line breaking.</blockquote>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>wrap-before</code> / <code class="inline" data-trim data-noescape>wrap-after</code></h2>
+
+					<p>These properties can have the following values:</p>
+
+					<ul>
+						<li>
+							<code class="inline" data-trim data-noescape>auto</code>: Lines break at their normal break points before and after the box, as determined by the line-breaking rules currentl in effect
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>avoid</code>: Line breaks are avoided before/after the box
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>avoid-line</code>: Same as <code class="inline" data-trim data-noescape>avoid</code> but for line breaks
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>avoid-flex</code>: Same as <code class="inline" data-trim data-noescape>avoid</code> but for flex line breaks
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>line</code>: Forces a line break before/after the box if it is an inline-level element
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>flex</code>: Forces a line break before/after the box if it is a flex item in a multi-line flex container
+						</li>
+					</ul>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>wrap-inside</code></h2>
+
+					<p class="text-left width-100">
+						The current specification in the draft can be found at <a href="https://drafts.csswg.org/css-text-4/#wrap-inside" title="CSS Text Module Level 4">https://drafts.csswg.org/css-text-4/#wrap-inside</a> and the possible values are the following:
+					</p>
+
+					<ul>
+						<li>
+							<code class="inline" data-trim data-noescape>auto</code>: Lines break at allowed break points within the box, as determined by the line-breaking rules currently in effect
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>avoid</code>: Line breaks are avoided within the box if there are no valid break points in the line. If the text breaks, line-breaking restrictions are honored as for <code class="inline" data-trim data-noescape>auto</code>
+						</li>
+					</ul>
+				</section>
+
+				<section class="slides__slide">
+					<h2>The <code class="inline" data-trim data-noescape>white-space</code> property</h2>
+
+					<p>All of the properties mentioned before can be merged into a single shorthand <code class="inline" data-trim data-noescape>white-space</code> property. The following table explains how it works:</p>
+
+					<table class="first-column">
+						<thead>
+							<tr>
+								<th>
+									<code class="inline" data-trim data-noescape>white-space</code>
+								</th>
+								<th>
+									<code class="inline" data-trim data-noescape>text-space-collapse</code>
+								</th>
+								<th>
+									<code class="inline" data-trim data-noescape>text-wrap</code>
+								</th>
+								<th>
+									<code class="inline" data-trim data-noescape>text-space-trim</code>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<code class="inline" data-trim data-noescape>normal</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>collapse</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>wrap</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>none</code>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline" data-trim data-noescape>pre</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>preserve</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>nowrap</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>none</code>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline" data-trim data-noescape>nowrap</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>collapse</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>nowrap</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>none</code>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline" data-trim data-noescape>pre-wrap</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>preserve</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>wrap</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>none</code>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<code class="inline" data-trim data-noescape>pre-line</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>preserve-breaks</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>wrap</code>
+								</td>
+								<td>
+									<code class="inline" data-trim data-noescape>none</code>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>hyphenate-character</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-4/#hyphenate-character" title="CSS Text Module Level 4">https://drafts.csswg.org/css-text-4/#hyphenate-character</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-4/#hyphenate-character">This property specifies strings that are shown between parts of hyphenated words. The auto value means that the user agent should find an appropriate value, preferably from the same source as the hyphenation dictionary. If a string is specified, it appears at the end of the line before a hyphenation break.</blockquote>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+p {
+	hyphenate-character: '💩';
+}
+					</code></pre>
+
+					<div class="hyphenate-character demo-output">
+						Here it is, a word that will break tremen💩<br>
+						dously.
+					</div>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>hyphenate-limit-zone</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-4/#hyphenate-size-limits" title="CSS Text Module Level 4">https://drafts.csswg.org/css-text-4/#hyphenate-size-limits</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-4/#hyphenate-size-limits">This property specifies the maximum amount of unfilled space (before justification) that may be left in the line box before hyphenation is triggered to pull part of a word from the next line back up into the current line.</blockquote>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>hyphenate-limit-chars</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-4/#hyphenate-char-limits" title="CSS Text Module Level 4">https://drafts.csswg.org/css-text-4/#hyphenate-char-limits</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-4/#hyphenate-char-limits">This property specifies the minimum number of characters in a hyphenated word. If the word does not meet the required minimum number of characters in the word / before the hyphen / after the hyphen, then the word must not be hyphenated.</blockquote>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>hyphenate-limit-lines</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-4/#hyphenate-line-limits" title="CSS Text Module Level 4">https://drafts.csswg.org/css-text-4/#hyphenate-line-limits</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-4/#hyphenate-line-limits">This property indicates the maximum number of successive hyphenated lines in an element. The no-limit value means that there is no limit.</blockquote>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>hyphenate-limit-last</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-4/#hyphenate-line-limits" title="CSS Text Module Level 4">https://drafts.csswg.org/css-text-4/#hyphenate-line-limits</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-4/#hyphenate-line-limits">This property indicates hyphenation behavior at the end of elements, column, pages, and spreads. A spread is a set of two pages that are visible to the reader at the same time. Values are:</blockquote>
+
+					<ul>
+						<li>
+							<code class="inline" data-trim data-noescape>none</code>: No restrictions are imposed
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>always</code>: The last full line of the element, or the last line before any column, page, or spread break inside the element should not be hyphenated
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>column</code>: The last line before any column, page, or spread break inside the element should not be hyphenated
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>page</code>: The last line before page or spread break inside the element should not be hyphenated
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>spread</code>: The last line before any spread break inside the element should not be hyphenated
+						</li>
+					</ul>
+				</section>
+
+				<section class="slides__slide">
+					<h1>CSS Text Decoration<br> Module Level 3</h1>
+					<h2><img class="min-width-50" src="images/streamers.gif"></h2>
+					<p><strong>Warning:</strong> as they day of writing of this presentation (December 14, 2016), this document is under <em>Editor's Draft</em> status</p>
+				</section>
+
+				<section class="slides__slide">
+					<h2 class="mb-60">CSS Text Decoration Module Level 3 - Disclaimer</h2>
+					<p>Since this spec is currently under <em>Editor's Draft</em> status, all of the content inside the CSS Text Module Level 4 document is currently under discussion and may change at any moment. The W3C hasn't endorsed this specification and this isn't anything but <strong>work in progress</strong>.</p>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-decoration-line</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-decor-3/#text-decoration-line-property" title="CSS Text Decoration Module Level 3">https://drafts.csswg.org/css-text-decor-3/#text-decoration-line-property</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-decor-3/#text-decoration-line-property">
+						Specifies what line decorations, if any, are added to the element. Values have the following meanings:
+					</blockquote>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+.no-decoration {
+	text-decoration-line: none;
+}
+.underline-decoration {
+	text-decoration-line: underline;
+}
+.overline-decoration {
+	text-decoration-line: overline;
+}
+.line-through-decoration {
+	text-decoration-line: line-through;
+}
+.blink-decoration {
+	text-decoration-line: blink; /* Deprecated. Use CSS animations */
+}
+					</code></pre>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-decoration-line</code></h2>
+
+					<div class="text-decoration-line demo-output">
+						<span>
+							<span class="none">No decoration for this text</span>
+						</span>
+
+						<span>
+							<span class="underline">Underline decoration for this one</span>
+						</span>
+
+						<span>
+							<span class="overline">Aaand overline decoration for this one</span>
+						</span>
+
+						<span>
+							<span class="line-through">Last, but not least, line-through decoration for this one</span>
+						</span>
+					</div>
+
+					<p class="width-100 text-left">Note that multiple values can be passed to this property</p>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-decoration-color</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-decor-3/#text-decoration-color-property" title="CSS Text Decoration Module Level 3">https://drafts.csswg.org/css-text-decor-3/#text-decoration-color-property</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-decor-3/#text-decoration-color-property">
+						This property specifies the color of text decoration (underlines overlines, and line-throughs) set on the element with <code class="inline" data-trim data-noescape>text-decoration-line</code>.
+					</blockquote>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+p {
+	text-decoration-line: underline;
+	text-decoration-color: limegreen;
+}
+					</code></pre>
+
+					<div class="text-decoration-color demo-output">
+						<span>
+							<span class="limegreen">Limegreen underline for this text</span>
+						</span>
+					</div>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-decoration-style</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-decor-3/#text-decoration-style-property" title="CSS Text Decoration Module Level 3">https://drafts.csswg.org/css-text-decor-3/#text-decoration-style-property</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-decor-3/#text-decoration-style-property">
+						This property specifies the style of the line(s) drawn for text decoration specified on the element. Values have the same meaning as for the <code class="inline" data-trim data-noescape>border-style</code> properties.
+					</blockquote>
+
+					<ul class="width-100">
+						<li>
+							<code class="inline" data-trim data-noescape>solid</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>double</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>dotted</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>dashed</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>wavy</code>
+						</li>
+					</ul>
+				</section>
+
+				<section class="slides__slide">
+					<h2>The <code class="inline" data-trim data-noescape>text-decoration</code> property</h2>
+
+					<p>All of the properties mentioned before can be merged into a single shorthand <code class="inline" data-trim data-noescape>text-decoration</code> property. The following example can give a very vague idea on how it works:</p>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+p {
+	text-decoration: underline dotted limegreen;
+}
+					</code></pre>
+
+					<div class="text-decoration demo-output">
+						<span>
+							<span class="limegreen">Limegreen dotted underline for this text</span>
+						</span>
+					</div>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-decoration-skip</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-decor-3/#text-decoration-skip-property" title="CSS Text Decoration Module Level 3">https://drafts.csswg.org/css-text-decor-3/#text-decoration-skip-property</a>:
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-decor-3/#text-decoration-skip-property">
+						This property specifies what parts of the element’s content any text decoration affecting the element must skip over. It controls all text decoration lines drawn by the element and also any text decoration lines drawn by its ancestors. Values have the following meanings:
+					</blockquote>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-decoration-skip</code></h2>
+
+					<ul class="width-100">
+						<li>
+							<code class="inline" data-trim data-noescape>none</code>: Decoration is drawn for all text content and across atomic inline-level boxes
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>objects</code>: Decoration isn't drawn for all inline-block level elements, or images for example
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>spaces</code>: Decoration isn't drawn for spacing and word separators
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>ink</code>: Skip decoration where glyphs are drawn. The UA must skip a small distance to either side of the glyph outline
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>edges</code>: The UA should place the start and end of the line inwards slightly to avoid joining different decorations
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>box-decoration</code>: Skip over the box’s margin, border, and padding areas. Note that this only has an effect on decorations imposed by an ancestor
+						</li>
+					</ul>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>text-underline-position</code></h2>
+
+					<p class="text-left width-100">
+						Like it states on the current draft <a href="https://drafts.csswg.org/css-text-decor-3/#text-underline-position-property" title="CSS Text Decoration Module Level 3">https://drafts.csswg.org/css-text-decor-3/#text-underline-position-property</a>
+					</p>
+
+					<blockquote class="width-100" cite="https://drafts.csswg.org/css-text-decor-3/#text-underline-position-property">
+						This property sets the position of a specified underline on the element
+					</blockquote>
+
+					<p>This property possible values are the following:</p>
+
+					<ul class="width-100">
+						<li>
+							<code class="inline" data-trim data-noescape>auto</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>under</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>left</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>right</code>
+						</li>
+					</ul>
+
+					<p>Note that <code class="inline" data-trim data-noescape>left</code> and <code class="inline" data-trim data-noescape>right</code> values are used for non <code class="inline" data-trim data-noescape>ltr</code> / <code class="inline" data-trim data-noescape>rtl</code> languages</p>
+				</section>
+
+				<section class="slides__slide">
+					<h1>Selectors Level 4</h1>
+					<h2><img src="images/helicopter-dog.gif"></h2>
+					<p><strong>Warning:</strong> as they day of writing of this presentation (December 14, 2016), this document is under <em>Editor's Draft</em> status</p>
+				</section>
+
+				<section class="slides__slide">
+					<h2 class="mb-60">Selectors Level 4 - Disclaimer</h2>
+					<p>Since this spec is currently under <em>Editor's Draft</em> status, all of the content inside the CSS Text Module Level 4 document is currently under discussion and may change at any moment. The W3C hasn't endorsed this specification and this isn't anything but <strong>work in progress</strong>.</p>
+
+					<p>For the sake of brevity, given the amount of new information in the Selectors Level 4 document, this talk won't be diving deep into each property as it was common until now. Instead, we'll be looking at some of the most important additions to the Selectors Module, and will quickly mention the rest of them.</p>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>:invalid</code> / <code class="inline" data-trim data-noescape>:valid</code> pseudo-classes</h2>
+
+					<pre class="width-100"><code class="hlhtml" data-trim data-escape contenteditable>
+<input type="email" value="test@domain.com">
+
+<input type="email" value="not an email address">
+					</code></pre>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+input:valid {
+	border: 2px solid green;
+}
+
+input:invalid {
+	border: 2px solid red;
+}
+					</code></pre>
+
+					<div class="selectors-level-4 demo-output">
+						<input type="email" class="valid" value="test@domain.com">
+
+						<input type="email" class="invalid" value="not an email address">
+					</div>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>:required</code> / <code class="inline" data-trim data-noescape>:optional</code> pseudo-classes</h2>
+
+					<pre class="width-100"><code class="hlhtml" data-trim data-escape contenteditable>
+<input type="text" placeholder="Text">
+
+<input type="email" placeholder="test@domain.com" required>
+					</code></pre>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+input:optional {
+	border: 2px solid #2e2e2e;
+}
+
+input:required {
+	border: 2px solid blue;
+}
+					</code></pre>
+
+					<div class="selectors-level-4 demo-output">
+						<input class="optional" type="text" placeholder="Text">
+
+						<input class="required" type="email" placeholder="test@domain.com" required>
+					</div>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>:drop</code> / <code class="inline" data-trim data-noescape>:drop()</code> pseudo-classes</h2>
+
+					<p>The <code class="inline" data-trim data-noescape>:drop</code> pseudo class allows us to select and style drop zones. This selector is huge step forward to achieving a more native way of handling drag-and-drop functionalities.</p>
+
+					<p>The <code class="inline" data-trim data-noescape>:drop()</code> syntax accepts a keyword, and allows us to style the drop zone depending on the current status of the interaction. <code class="inline" data-trim data-noescape>active</code> for when an item has been dragged over the drop zone, <code class="inline" data-trim data-noescape>valid</code> to indicate if the item being dragged corresponds with the type of items the drop zone accepts, and <code class="inline" data-trim data-noescape>invalid</code> for the opposite.</p>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>:has()</code> pseudo-class</h2>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-escape contenteditable>
+<div>
+	<span>Some text</span>
+</div>
+
+<div>
+	<h3>Some other text</h3>
+</div>
+					</code></pre>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+/* Same as `div:has(h3)` */
+:has(h3) {
+	border: 2px solid red;
+}
+/* Could also use `:has(> h3)` if only targeting direct children */
+					</code></pre>
+
+					<div class="selectors-level-4 demo-output">
+						<div>
+							<span>Some text</span>
+						</div>
+
+						<div class="has-h3">
+							<h3>Some other text</h3>
+						</div>
+					</div>
+				</section>
+
+				<section class="slides__slide">
+					<h2><code class="inline" data-trim data-noescape>:matches()</code> pseudo-class</h2>
+
+					<pre class="width-100"><code class="hlhtml" data-trim data-escape contenteditable>
+<div>Some text</div>
+
+<aside>Some other text</aside>
+
+<footer>Some other other text</footer>
+					</code></pre>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+:matches(div, aside) {
+	border: 2px solid blue;
+}
+
+:matches(footer) {
+	border: 2px solid green;
+}
+					</code></pre>
+
+					<div class="selectors-level-4 demo-output">
+						<div class="div">
+							Some text
+						</div>
+
+						<div class="aside">
+							Some other text
+						</div>
+
+						<div class="footer">
+							Some other other text
+						</div>
+					</div>
+				</section>
+
+				<section class="slides__slide">
+					<h2>Case insensitive flag for <code class="inline" data-trim data-noescape>[attr]</code> selectors</h2>
+
+					<p>By default CSS attribute selectors are case sensitive, but adding the <code class="inline" data-trim data-noescape>i</code> flag, we can turn those to case insensitive</p>
+
+					<pre class="width-100"><code class="hlhtml" data-trim data-escape contenteditable>
+<div data-attribute="case">Some text</div>
+
+<div data-attribute="CASE">Some other text</div>
+					</code></pre>
+
+					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
+[data-attribute="case" i] {
+	border: 2px solid blue;
+}
+					</code></pre>
+
+					<div class="selectors-level-4 demo-output">
+						<div class="case-insensitive-flag">Some text</div>
+
+						<div class="case-insensitive-flag">Some other text</div>
+					</div>
+				</section>
+
+				<section class="slides__slide">
+					<h2>Other selectors that are worth mentioning</h2>
+
+					<ul class="width-100">
+						<li>
+							<code class="inline" data-trim data-noescape>:placeholder-shown</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>:dir()</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>:user-error</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>:nth-column()</code> / <code class="inline" data-trim data-noescape>:nth-last-column()</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>:blank</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>:focus-within</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>:any-link</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>:in-range</code> / <code class="inline" data-trim data-noescape>:out-of-range</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>:default</code>
+						</li>
+						<li>
+							<code class="inline" data-trim data-noescape>:read-only</code> / <code class="inline" data-trim data-noescape>:read-write</code>
+						</li>
+					</ul>
+
+					<p class="width-100">Read more at: <a href="https://drafts.csswg.org/selectors-4/" title="Selectors Level 4">https://drafts.csswg.org/selectors-4/</a></p>
+				</section>
+
+				<section class="slides__slide">
+					<h1>Thank you!</h1>
+
+					<img src="images/thank-you.gif">
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
