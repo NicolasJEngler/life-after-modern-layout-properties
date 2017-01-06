@@ -110,9 +110,9 @@ p::first-line {
 					</code></pre>
 
 					<div class="first-line-pseudo demo-output">
-						<span class="uppercase">First line of a paragraph</span><br>
-						Something else written here, and so on.<br>
-						We finally reached a third line.<br>
+						<span class="uppercase">Lorem ipsum dolor sit amet consectetur</span><br>
+						adipisicing elit sed do eiusmod tempor<br>
+						incididunt ut labore et dolore magna aliqua<br>
 					</div>
 				</section>
 
@@ -207,25 +207,25 @@ p::first-letter {
 					 <blockquote class="width-100" cite="https://www.w3.org/TR/css-pseudo-4/#first-letter-pseudo">The <code class="inline" data-trim data-noescape>::marker</code> pseudo-element represents the automatically generated marker box of a list item.</blockquote>
 
 					<pre class="width-100"><code class="hlcss" data-trim data-noescape contenteditable>
-ul li::marker {
+ol li::marker {
 	font-weight: bold;
 	color: limegreen;
 }
 					</code></pre>
 
 					<div class="marker-pseudo demo-output">
-						<ul>
+						<ol>
 							<li><span class="marker">1.</span> Something here</li>
 							<li><span class="marker">2.</span> Something else in this place</li>
 							<li><span class="marker">3.</span> Aaand one more thing</li>
-						</ul>
+						</ol>
 					</div>
 				</section>
 
 				<section class="slides__slide">
 					<h1>CSS Text<br> Module Level 4</h1>
 					<h2><img class="min-width-50" src="images/monkey-typewriter.gif"></h2>
-					<p><strong>Warning:</strong> as they day of writing of this presentation (December 14, 2016), this document is under <em>Editor's Draft</em> status</p>
+					<p><strong>Warning:</strong> as they day of revision of this presentation (December 14, 2016), this document is under <em>Editor's Draft</em> status</p>
 				</section>
 
 				<section class="slides__slide">
@@ -284,7 +284,7 @@ ul li::marker {
 
 					<ul>
 						<li>
-							<code class="inline" data-trim data-noescape>trim-inner</code>: For block containers this value discards all whitespace at the beginning of the element up to, and including, the last segment break before the first non-white-space character in the element. It also discards all white space at the end of the element starting with the first segment break after the last non-white-space character in the element. For other elements this value discard all whitespace at the beginning and end of the element.
+							<code class="inline" data-trim data-noescape>trim-inner</code>: For block containers this value discards all whitespace at the beginning of the element up to, and including, the last segment break before the first non-white-space character in the element. It also discards all white space at the end of the element starting with the first segment break after the last non-white-space character in the element. For other elements this value discards all whitespace at the beginning and end of the element.
 						</li>
 						<li>
 							<code class="inline" data-trim data-noescape>discard-before</code>: All collapsible whitespace immediately before the start of the element is collapsed
@@ -312,10 +312,10 @@ ul li::marker {
 
 					<ul>
 						<li>
-							<code class="inline" data-trim data-noescape>wrap</code>: All lones break whenever they should break or as determined by the line-breaking rules currently in effect
+							<code class="inline" data-trim data-noescape>wrap</code>: All lines break whenever they should break or as determined by the line-breaking rules currently in effect
 						</li>
 						<li>
-							<code class="inline" data-trim data-noescape>nowrap</code>: Lines doesn't break, and text that doesn't fit within the block that contains it overflows it
+							<code class="inline" data-trim data-noescape>nowrap</code>: Lines don't break, and text that doesn't fit within the block that contains it overflows it
 
 						</li>
 						<li>
@@ -344,7 +344,7 @@ ul li::marker {
 
 					<ul>
 						<li>
-							<code class="inline" data-trim data-noescape>auto</code>: Lines break at their normal break points before and after the box, as determined by the line-breaking rules currentl in effect
+							<code class="inline" data-trim data-noescape>auto</code>: Lines break at their normal break points before and after the box, as determined by the line-breaking rules currently in effect
 						</li>
 						<li>
 							<code class="inline" data-trim data-noescape>avoid</code>: Line breaks are avoided before/after the box
@@ -560,7 +560,7 @@ p {
 				<section class="slides__slide">
 					<h1>CSS Text Decoration<br> Module Level 3</h1>
 					<h2><img class="min-width-50" src="images/streamers.gif"></h2>
-					<p><strong>Warning:</strong> as they day of writing of this presentation (December 14, 2016), this document is under <em>Editor's Draft</em> status</p>
+					<p><strong>Warning:</strong> as they day of revision of this presentation (December 14, 2016), this document is under <em>Editor's Draft</em> status</p>
 				</section>
 
 				<section class="slides__slide">
@@ -743,7 +743,7 @@ p {
 						This property sets the position of a specified underline on the element
 					</blockquote>
 
-					<p>This property possible values are the following:</p>
+					<p class="text-left">This property possible values are the following:</p>
 
 					<ul class="width-100">
 						<li>
@@ -766,7 +766,7 @@ p {
 				<section class="slides__slide">
 					<h1>Selectors Level 4</h1>
 					<h2><img src="images/helicopter-dog.gif"></h2>
-					<p><strong>Warning:</strong> as they day of writing of this presentation (December 14, 2016), this document is under <em>Editor's Draft</em> status</p>
+					<p><strong>Warning:</strong> as they day of revision of this presentation (December 14, 2016), this document is under <em>Editor's Draft</em> status</p>
 				</section>
 
 				<section class="slides__slide">
@@ -831,7 +831,7 @@ input:required {
 				<section class="slides__slide">
 					<h2><code class="inline" data-trim data-noescape>:drop</code> / <code class="inline" data-trim data-noescape>:drop()</code> pseudo-classes</h2>
 
-					<p>The <code class="inline" data-trim data-noescape>:drop</code> pseudo class allows us to select and style drop zones. This selector is huge step forward to achieving a more native way of handling drag-and-drop functionalities.</p>
+					<p>The <code class="inline" data-trim data-noescape>:drop</code> pseudo class allows us to select and style drop zones. This selector is a huge step forward to achieving a more native way of handling drag-and-drop functionalities.</p>
 
 					<p>The <code class="inline" data-trim data-noescape>:drop()</code> syntax accepts a keyword, and allows us to style the drop zone depending on the current status of the interaction. <code class="inline" data-trim data-noescape>active</code> for when an item has been dragged over the drop zone, <code class="inline" data-trim data-noescape>valid</code> to indicate if the item being dragged corresponds with the type of items the drop zone accepts, and <code class="inline" data-trim data-noescape>invalid</code> for the opposite.</p>
 				</section>
@@ -907,7 +907,7 @@ input:required {
 				<section class="slides__slide">
 					<h2>Case insensitive flag for <code class="inline" data-trim data-noescape>[attr]</code> selectors</h2>
 
-					<p>By default CSS attribute selectors are case sensitive, but adding the <code class="inline" data-trim data-noescape>i</code> flag, we can turn those to case insensitive</p>
+					<p>By default CSS attribute selectors are case sensitive, but by adding the <code class="inline" data-trim data-noescape>i</code> flag, we can turn those to case insensitive</p>
 
 					<pre class="width-100"><code class="hlhtml" data-trim data-escape contenteditable>
 <div data-attribute="case">Some text</div>

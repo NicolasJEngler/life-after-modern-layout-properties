@@ -1515,9 +1515,9 @@ body {
       line-height: .75em;
       position: relative;
       top: 10px; }
-    .reveal .slides__slide .marker-pseudo ul {
+    .reveal .slides__slide .marker-pseudo ol {
       list-style-type: none; }
-      .reveal .slides__slide .marker-pseudo ul li .marker {
+      .reveal .slides__slide .marker-pseudo ol li .marker {
         font-weight: bold;
         color: limegreen; }
     .reveal .slides__slide .text-decoration-line > span {
